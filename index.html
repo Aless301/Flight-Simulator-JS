@@ -1,42 +1,63 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Simulateur de vol en Canvas</title>
     <style>
-        /* 
-        EN: Basic CSS to style the body and the canvas element.
-        - Body: Removes default margins and disables scrollbars to display the game fullscreen.
-        - Canvas: Sets a green background to simulate grass and removes spacing around it.
-        
-        FR : CSS de base pour styliser le corps de la page et l'élément canvas.
-        - Body : Supprime les marges par défaut et désactive les barres de défilement pour afficher le jeu en plein écran.
-        - Canvas : Ajoute un fond vert pour simuler de l'herbe et supprime les espaces autour.
+      /* 
+        EN: Styling for both the game canvas and the menu.
+        FR : Style pour le canvas du jeu et le menu.
         */
-        body { 
-            margin: 0;  /* No margins / Pas de marges */
-            overflow: hidden; /* Disable scrollbars / Désactive les barres de défilement */
-        }
-        canvas { 
-            background-color: rgb(53, 104, 45); /* Grass color / Couleur de l'herbe */
-            display: block; /* Remove canvas margin / Supprime la marge du canvas */
-        }
+      body {
+        margin: 0;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #355c2d; /* Background color for the menu */
+      }
+      #menu {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+      #menu button {
+        padding: 15px 30px;
+        font-size: 18px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+      }
+      #menu button:hover {
+        background-color: #3e8e41;
+      }
+      canvas {
+        display: none; /* Initially hidden until a mode is chosen */
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <!-- 
-    EN: The canvas element is where the flight simulator game will be rendered. 
-    It uses JavaScript and the 2D context to draw and animate the game world.
-
-    FR : L'élément canvas est là où le jeu de simulateur de vol sera rendu.
-    Il utilise JavaScript et le contexte 2D pour dessiner et animer le monde du jeu.
+    EN: Main menu to choose the game mode before starting.
+    FR : Menu principal pour choisir le mode de jeu avant de commencer.
     -->
+    <div id="menu">
+      <h1 style="color: white; font-family: Arial, sans-serif">
+        Simulateur de vol
+      </h1>
+      <button id="simpleFlightButton">Vol Simple</button>
+      <button id="futureModeButton">Mode Futur (À venir)</button>
+    </div>
+
+    <!-- Canvas for the flight simulation -->
+    <!-- Canvas pour la simulation de vol -->
     <canvas id="gameCanvas"></canvas>
 
-    <!-- 
-    EN: External JavaScript file containing the game's logic, rendering, and interactions. 
-    FR : Fichier JavaScript externe contenant la logique du jeu, le rendu et les interactions.
-    -->
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
